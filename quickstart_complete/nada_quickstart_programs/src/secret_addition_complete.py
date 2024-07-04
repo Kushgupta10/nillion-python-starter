@@ -1,12 +1,30 @@
-from nada_dsl import *
-def nada_main():
+// Program to display the Fibonacci sequence up to n-th term
 
-    party1 = Party(name="Party1")
+output("How many terms? ")
+var nterms = input()
 
-    my_int1 = SecretInteger(Input(name="my_int1", party=party1))
 
-    my_int2 = SecretInteger(Input(name="my_int2", party=party1))
+nterms = to_int(nterms)
 
-    new_int = my_int1 + my_int2
 
-    return [Output(new_int, "my_output", party1)]
+var n1 = 0
+var n2 = 1
+var count = 0
+
+
+if nterms <= 0 {
+    output("Please enter a positive integer")
+} else if nterms == 1 {
+    output("Fibonacci sequence upto " + to_string(nterms) + " : ")
+    output(to_string(n1))
+} else {
+    output("Fibonacci sequence:")
+    while count < nterms {
+        output(to_string(n1))
+        var nth = n1 + n2
+        // Update values
+        n1 = n2
+        n2 = nth
+        count = count + 1
+    }
+}
